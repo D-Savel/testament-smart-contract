@@ -44,6 +44,9 @@ describe('TestamentFactory', function () {
   it('should return beneficiary address for new contract created', async function () {
     expect(await testamentFactory.connect(owner).benificiary(testament1Address)).to.equal(alice.address);
   });
+  it('should return contract address for new contract created', async function () {
+    expect(await testamentFactory.connect(owner).testamentContractAddress(alice.address)).to.equal(testament1Address);
+  });
   it('Should emit a TestamentCreated event at deployment', async function () {
     await expect(tx).to.emit(testamentFactory, 'TestamentCreated')
       .withArgs(testament1Address, alice.address, doctor.address);
